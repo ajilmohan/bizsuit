@@ -1,0 +1,7 @@
+<ul class="list-group">
+	<li class="list-group-item" ng-show="editable" >
+		<input type="text" class="input-sm" ng-model="amenity.name"/>
+		<a href="" class="btn btn-success btn-sm" ng-click="add(amenity)">Add</a>
+	</li>
+	<li class="list-group-item" ng-repeat="item in list">{{item.name}}</li>
+</ul>
