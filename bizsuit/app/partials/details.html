@@ -1,0 +1,72 @@
+<div class="row well" ng-controller="detailsController">
+
+	<img class="col-md-2 col-sm-4 col-xs-12" ng-src="http://i.imgur.com/{{hotel.imgUrl}}" />
+	<div class="col-md-7">
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-sm-12">
+				<h3 >
+					<div ng-hide="hotel.editMode">{{hotel.name | uppercase}}</div>
+					<div ng-show="hotel.editMode">
+						<input type="text" ng-model="hotel.name"/>
+					</div>
+				</h3>
+				<h4>
+					<div ng-hide="hotel.editMode">{{hotel.location}}</div>
+					<div ng-show="hotel.editMode">
+						<input type="text" ng-model="hotel.location"/>
+					</div>
+				</h4>
+			</div>
+			<div class="col-md-3 col-sm-4 hidden-xs">
+				<div>
+					<h3>
+						<div ng-hide="hotel.editMode">{{hotel.price | currency : 'INR '}}</div>
+						<div ng-show="hotel.editMode">
+							<input type="number" ng-model="hotel.price" />
+						</div>
+					</h3>
+				</div>
+				<h4>
+					<div class="label label-warning">{{hotel.area | toFeet | number : 2}}</div>
+				</h4>
+
+			</div >
+			<div class="col-md-1 col-sm-4 hidden-xs">
+				<button ng-show="hotel.editMode" ng-click="hotel.editMode = false">
+					<span class="glyphicon glyphicon-floppy-disk"></span>
+				</button>
+			</div>
+			<div  class="col-md-2 col-sm-4 hidden-xs">
+				<div>
+					<button ng-click="startEditing(hotel)">edit</button>
+				</div>
+				<div>
+					<button ng-click="upVote(hotel)">up</button>
+				</div>
+				<div>{{hotel.rating}}</div>
+				<div>
+					<button ng-click="downVote(hotel)">down</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div ng-show="hotel.editMode">
+					<textarea class="form-control" rows="7" ng-model="hotel.description"></textarea>
+				</div>
+				<blockquote class="text-muted" ng-hide="hotel.editMode">
+					<span ng-hide="showMore">{{hotel.description | limitTo: descLimit}}</span>
+					<span ng-show="showMore">{{hotel.description }}</span>
+					<span ng-show="hotel.description.length >
+						descLimit && !showMore">
+						<a href='' ng-click="showMore = true">... more</a>
+					</span>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<amnity-display list="hotel.amenities"></amnity-display>
+	</div>
+
+</div>
