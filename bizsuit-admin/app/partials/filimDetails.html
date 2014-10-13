@@ -9,6 +9,21 @@
 		border-width: 2px;
 	}
 
+	#slides_control > div{
+	  height: 100px;
+	}
+	img{
+	  margin:auto;
+	  width: 400px;
+	}
+	#slides_control {
+	  position:absolute;
+	  width: 400px;
+	  left:50%;
+	  top:20px;
+	 margin-left:-200px;
+	}
+
 	</style>
 
 	<div class="page-header">
@@ -42,6 +57,25 @@
 						</div>
 					</ng-form>
 				</div>
+
+
+				<div class="row">
+
+					<div style="height: 305px">
+						<carousel interval="imageSlideInterval">
+							<slide ng-repeat="slide in filim.slides" active="slide.active">
+								<img ng-src="{{slide.image}}" style="margin:auto;">
+								<div class="carousel-caption">
+									<h4>Slide {{$index}}</h4>
+									<p>{{slide.text}}</p>
+								</div>
+							</slide>
+						</carousel>
+					</div>
+
+				</div>
+
+
 			</div>
 
 			<div class="col-md-1" >
@@ -61,14 +95,14 @@
 							</div>
 					</div>
 
-					<div class="row">
 
-						
+
+					<div class="row">
 
 						<div class="well well-lg">
 
-							<label class="col-sm-12 control-label" >Shows Details</label>
-							
+							<label class="col-sm-12 control-label" >Add Shows</label>
+
 						</div>
 
 							<div class="form-group">
@@ -84,9 +118,50 @@
 								
 							</div>
 							<div class="col-sm-2">
-									<button class="btn btn-default"  ng-click="addShow(show)">Add</button>
+									<button class="btn btn-default"  ng-click="addShow(show)">Add Shows</button>
 							</div>
+
 					</div>
+
+
+
+					<div class="row" ng-show="filim.shows != 'undefined' ">
+
+								<div class="well well-lg">
+
+									<label class="col-sm-12 control-label" >Shows Details</label>
+
+							   </div>
+
+							   <div class="row">
+							   		<div class="col-md-3">
+							   			Screen
+							   		</div>
+							   		<div class="col-md-3">
+							   			Time
+							   		</div>
+							   		<div class="col-md-3">
+							   			Status
+							   		</div>
+
+							   </div>
+
+							   <div class="row" ng-repeat="show in filim.shows">
+
+							   		<div class="col-md-3">
+							   			<label class="control-label" >{{show.screen}}</label>
+							   		</div>
+							   		<div class="col-md-3">
+							   			<label class="control-label" >{{show.time}}</label>
+							   		</div>
+							   		<div class="col-md-3">
+							   			<label class="control-label" >{{show.status}}</label>
+							   		</div>
+
+							   </div>
+
+				</div>
+
 			</div>
 		</div>	
 
