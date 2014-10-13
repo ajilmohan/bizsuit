@@ -1,4 +1,4 @@
-angular.module('filimexpo', ['filims', 'ngRoute']);
+angular.module('filimexpo', ['filims', 'ngRoute' , 'ui.bootstrap']);
 
 angular.module('filimexpo').config(function( $routeProvider) {
 
