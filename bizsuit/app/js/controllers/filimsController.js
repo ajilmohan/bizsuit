@@ -37,7 +37,7 @@ angular.module('filims')
 						reset = false;
 					};
 					
-				},7000);
+				},20000);
 
 			 
 			

@@ -33,9 +33,9 @@ angular.module('filimdetail')
 		}
 
 		$scope.addImageUrl = function(imgUrl){
-			
+			var newWidth = 600 + $scope.filim.slides.length;
 			$scope.filim.images.push(imgUrl);
-			var imageDet = {image: imgUrl ,
+			var imageDet = {image: imgUrl +'/' +newWidth + '/300' ,
 		      text: ''}
 		    $scope.filim.slides.push(imageDet);
 			var imageDet = {};	
