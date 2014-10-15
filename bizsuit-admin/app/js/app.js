@@ -12,6 +12,10 @@ angular.module('filimexpo').config(function( $routeProvider) {
 		templateUrl: 'partials/editFilim.html'
 	})
 
+	$routeProvider.when('/listFilims', {
+		templateUrl: 'partials/listFilims.html'
+	})
+
 	
 	
 
