@@ -1,0 +1,212 @@
+<div ng-controller="createController">
+	<style type="text/css">
+	input.ng-dirty.ng-invalid{
+		background-color: pink
+	}
+
+	input.ng-pristine.ng-invalid{
+		border-color: pink;
+		border-width: 2px;
+	}
+
+	#slides_control > div{
+	  height: 100px;
+	}
+	img{
+	  margin:auto;
+	  width: 400px;
+	}
+	#slides_control {
+	  position:absolute;
+	  width: 400px;
+	  left:50%;
+	  top:20px;
+	 margin-left:-200px;
+	}
+
+	.child {
+	    vertical-align:middle;
+	    text-align:center;
+	}
+
+	</style>
+
+	<div class="page-header">
+			<h1>Enter filim details<small>Admin Console</small></h1>
+	</div>
+
+	
+		<div class="row">
+			<div class="col-md-6" >
+				<div class="row">
+					<ng-form class="form-horizontal" role="form" name="filimsForm">
+						<div class="form-group">
+							<label class="col-sm-4 control-label" zoom>Name</label>
+							<div class="col-sm-8">
+									<input ng-model="filim.name" name="uName" required maxlength="50" type="text" class="form-control " placeholder="Name">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-4 control-label" zoom>Language</label>
+							<div class="col-sm-8">
+									<input ng-model="filim.language" name="uLanguage" required maxlength="50" type="text" class="form-control " placeholder="Language">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-4 control-label" zoom>Caste</label>
+							<div class="col-sm-8">
+									<input ng-model="filim.caste" name="uCaste" required maxlength="50" type="text" class="form-control " placeholder="Caste">
+							</div>
+						</div>
+					</ng-form>
+				</div>
+
+
+				<div class="row">
+
+					<div style="height: 305px">
+						<carousel interval="imageSlideInterval">
+							<slide ng-repeat="slide in filim.slides" active="slide.active">
+								<img ng-src="{{slide.image}}" style="margin:auto;">
+								<div class="carousel-caption">
+									<h4>Slide {{$index}}</h4>
+									<p>{{slide.text}}</p>
+								</div>
+							</slide>
+						</carousel>
+					</div>
+
+				</div>
+
+
+			</div>
+
+			<div class="col-md-1" >
+					
+			</div>
+
+			<div class="col-md-5" >
+					<div class="row">
+							<div class="form-group">
+								<label class="col-sm-2 control-label" >Image Url</label>
+								<div class="col-sm-8">
+										<input ng-model="filim.imgUrl" name="uImgUrl" required maxlength="50" type="text" class="form-control " placeholder="Image Url">
+								</div>
+								<div class="col-sm-2">
+									<button class="btn btn-default"  ng-click="addImageUrl(filim.imgUrl)">Add</button>
+								</div>
+							</div>
+					</div>
+
+
+
+					<div class="row">
+
+						<div class="well well-lg">
+
+							<label class="col-sm-12 control-label" >Add Shows</label>
+
+						</div>
+
+							<div class="form-group">
+								<div class="col-sm-4" >
+										<div style="height:27px" ></div>
+										<!--<input ng-model="show.screen" name="uShowScreen" required maxlength="50" type="text" class="form-control" placeholder="Screen"> -->
+										<select ng-model="show.screen" class="form-control" ng-options="screen as screen for screen in screens"></select>
+								</div>
+								<div class="col-sm-5 ">
+										<!--<input ng-model="show.time" name="uShowScreen" required maxlength="50" type="text" class="form-control " placeholder="Time"> -->
+										<timepicker ng-model="show.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+								</div>
+								<div class="col-sm-3">
+										<div style="height:27px" ></div>
+										<!--<input ng-model="show.status" name="uShowStatus" required maxlength="50" type="text" class="form-control col-middle" placeholder="Status"> -->
+
+										 <select ng-model="show.status" class="form-control" ng-options="status as status for status in statusval"></select>
+
+								</div>
+								
+							</div>
+
+					</div>
+
+					<div class="row">
+							<div class="col-sm-2">
+									<div style="height:27px" ></div>
+									<button class="btn btn-default"  ng-click="addShow(show)">Add Shows</button>
+							</div>
+					</div>
+
+
+					<div class="row" style="height:30px"></div>
+					<div class="row" ng-show="filim.shows != 'undefined' ">
+
+								<div class="well well-lg">
+
+									<label class="col-sm-12 control-label" >Shows Details</label>
+
+							   </div>
+
+							   <div class="row">
+							   		<div class="col-md-3">
+							   			Screen
+							   		</div>
+							   		<div class="col-md-2">
+							   			Time
+							   		</div>
+							   		<div class="col-md-3">
+							   			Status
+							   		</div>
+
+							   </div>
+
+							   <div class="row" ng-repeat="show in filim.shows">
+
+							   		<div class="col-md-3">
+							   			<label class="control-label" >{{show.screen}}</label>
+							   		</div>
+							   		<div class="col-md-2">
+							   			<label class="control-label" >{{show.time | date:'shortTime' }}</label>
+							   		</div>
+							   		<div class="col-md-3">
+							   			<label class="control-label" >{{show.status}}</label>
+							   		</div>
+							   		<div class="col-md-2">
+										<button class="btn btn-default"  ng-click="editShow(show)">Edit</button>
+									</div>
+									<div class="col-md-2">
+										<button class="btn btn-default"  ng-click="deleteShow(show)">Delete</button>
+									</div>
+
+							   </div>
+
+							  <div class="row" style="height:30px">
+
+							  </div>
+
+				</div>
+
+
+				<div class="row">
+						<div class="col-sm-2">
+									<button class="btn btn-primary"  ng-click="addFilim(filim)">Add Filim Details</button>
+						</div>
+				</div>
+
+			</div>
+		</div>	
+
+		
+
+
+	
+  
+
+	
+
+		
+
+
+
