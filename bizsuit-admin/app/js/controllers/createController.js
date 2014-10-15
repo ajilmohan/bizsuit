@@ -10,7 +10,13 @@ angular.module('filimdetail')
 		$scope.filim.shows = shows;
 		$scope.filim.images = [];
 		$scope.filim.slides = [];
-
+		$scope.show = {};
+		$scope.show.time = new Date();
+		$scope.ismeridian = true;
+		$scope.hstep = 1;
+  		$scope.mstep = 15;
+  		$scope.statusval = ['Available' , 'Sold Out' , 'Fast Filling'];
+  		$scope.screens = ['SC-1' , 'SC-2' , 'SC-3' , 'SC-4' , 'SC-5'];
 		$scope.addFilim = function(filim) {
 		 
 			//$scope.filimToPersist = angular.copy(filim);
@@ -41,5 +47,9 @@ angular.module('filimdetail')
 			var imageDet = {};	
 			$scope.filim.imgUrl = "";
 		}
+
+		 $scope.changed = function () {
+		    //console.log('Time changed to: ' + $scope.show.time);
+		 };
 
 	});

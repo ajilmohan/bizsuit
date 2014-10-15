@@ -24,6 +24,11 @@
 	 margin-left:-200px;
 	}
 
+	.child {
+	    vertical-align:middle;
+	    text-align:center;
+	}
+
 	</style>
 
 	<div class="page-header">
@@ -106,25 +111,36 @@
 						</div>
 
 							<div class="form-group">
-								<div class="col-sm-4">
-										<input ng-model="show.screen" name="uShowScreen" required maxlength="50" type="text" class="form-control " placeholder="Screen">
+								<div class="col-sm-4" >
+										<div style="height:27px" ></div>
+										<!--<input ng-model="show.screen" name="uShowScreen" required maxlength="50" type="text" class="form-control" placeholder="Screen"> -->
+										<select ng-model="show.screen" class="form-control" ng-options="screen as screen for screen in screens"></select>
 								</div>
-								<div class="col-sm-4">
-										<input ng-model="show.time" name="uShowScreen" required maxlength="50" type="text" class="form-control " placeholder="Time">
+								<div class="col-sm-5 ">
+										<!--<input ng-model="show.time" name="uShowScreen" required maxlength="50" type="text" class="form-control " placeholder="Time"> -->
+										<timepicker ng-model="show.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
 								</div>
-								<div class="col-sm-4">
-										<input ng-model="show.status" name="uShowStatus" required maxlength="50" type="text" class="form-control " placeholder="Status">
+								<div class="col-sm-3">
+										<div style="height:27px" ></div>
+										<!--<input ng-model="show.status" name="uShowStatus" required maxlength="50" type="text" class="form-control col-middle" placeholder="Status"> -->
+
+										 <select ng-model="show.status" class="form-control" ng-options="status as status for status in statusval"></select>
+
 								</div>
 								
-							</div>
-							<div class="col-sm-2">
-									<button class="btn btn-default"  ng-click="addShow(show)">Add Shows</button>
 							</div>
 
 					</div>
 
+					<div class="row">
+							<div class="col-sm-2">
+									<div style="height:27px" ></div>
+									<button class="btn btn-default"  ng-click="addShow(show)">Add Shows</button>
+							</div>
+					</div>
 
 
+					<div class="row" style="height:30px"></div>
 					<div class="row" ng-show="filim.shows != 'undefined' ">
 
 								<div class="well well-lg">
@@ -152,7 +168,7 @@
 							   			<label class="control-label" >{{show.screen}}</label>
 							   		</div>
 							   		<div class="col-md-2">
-							   			<label class="control-label" >{{show.time}}</label>
+							   			<label class="control-label" >{{show.time | date:'shortTime' }}</label>
 							   		</div>
 							   		<div class="col-md-3">
 							   			<label class="control-label" >{{show.status}}</label>
@@ -166,11 +182,16 @@
 
 							   </div>
 
+							  <div class="row" style="height:30px">
+
+							  </div>
+
 				</div>
+
 
 				<div class="row">
 						<div class="col-sm-2">
-									<button class="btn btn-default"  ng-click="addFilim(filim)">Add Filim Details</button>
+									<button class="btn btn-primary"  ng-click="addFilim(filim)">Add Filim Details</button>
 						</div>
 				</div>
 
