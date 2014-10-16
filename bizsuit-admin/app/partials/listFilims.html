@@ -2,29 +2,36 @@
 
 
 <div ng-controller="editController"   >
+	<div class="row col-md-12"  >
+			  <div  style="height:40px" > </div>
+	<div>
 	<div ng-class="row " >
 	<div ng-repeat="filimRow in filimOuterRow" >
-		
 				
-				<div class="col-md-12" ng-show="filimRow != null">
-						<div class="col-md-3 " >
-								
-								<img ng-src="{{filimRow[0].images[0]}}" alt="..." class="img-thumbnail">
-						</div>
+				<div class="row" >
+					<div class="col-md-12" >
+							<div class="col-md-3 " >
+									
+									<img  class="img-responsive" ng-click="editDetNavigation(filimRow[0])" ng-src="{{filimRow[0].images[0]}}" alt="..." class="thumbnail">
+							</div>
 
-						<div class="col-md-3" >
-								<img ng-src="{{filimRow[0].images[0]}}" alt="..." class="img-thumbnail">
-						</div>
+							<div class="col-md-3"  >
+									<img class="img-responsive" ng-click="editDetNavigation(filimRow[1])" ng-src="{{filimRow[1].images[0]}}"  alt="..." class="thumbnail">
+							</div>
 
-						<div class="col-md-3" >
-								<img ng-src="{{filimRow[0].images[0]}}" alt="..." class="img-thumbnail">
-						</div>
+							<div class="col-md-3" >
+									<img  class="img-responsive" ng-click="editDetNavigation(filimRow[2])" ng-src="{{filimRow[2].images[0]}}" alt="..." class="thumbnail">
+							</div>
 
-						<div class="col-md-3" >
-								<img ng-src="{{filimRow[0].images[0]}}" alt="..." class="img-thumbnail">
-						</div>
-				<div>
-			
+							<div class="col-md-3" >
+									<img class="img-responsive" ng-click="editDetNavigation(filimRow[3])" ng-src="{{filimRow[3].images[0]}}" alt="..." class="thumbnail">
+							</div>
+					<div>
+			    <div>
+
+			    <div class="row col-md-12"  >
+			    		<div  style="height:120px" > </div>
+			    <div>
 		
 	</div>
 	</div>

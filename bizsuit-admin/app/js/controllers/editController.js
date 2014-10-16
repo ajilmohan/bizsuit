@@ -1,7 +1,7 @@
 
 
 angular.module('filimdetail')
-	.controller('editController', function($scope, filimDb, $location) {
+	.controller('editController', function($scope, filimDb, $location ) {
 		
 		 	
 		   		var filimOuterRow  = [];
@@ -16,16 +16,34 @@ angular.module('filimdetail')
 					 	var childRow = [];
 					 	for (var j = 0; j < 4 ; j++) {
 					 		childRow[j] = filims[memberIndex];
+					 		if (totalFilims == memberIndex ) { 
+					 			filimOuterRow[i] = childRow; 
+					 			$scope.filimOuterRow = filimOuterRow;
+					 			return;
+					 		}
 					 		memberIndex++;
+
 					 	}
-					 	filimOuterRow[i] = childRow;
+					 	filimOuterRow[i] = childRow; 
+					 	
 					 }
+					
 					$scope.filimOuterRow = filimOuterRow;
 				});
 
 		  		
 
 		 
+		  	
 
+		  		$scope.editDetNavigation = function(filim){
+					
+					$scope.filim = filim;
+
+					
+
+					 $location.path( '/partials/editFilim.html' );
+
+				}
 
 	});
