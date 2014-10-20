@@ -3,8 +3,9 @@
 angular.module('filimdetail')
 	.controller('editController', function($scope, filimDb, $location ) {
 		
-		 	
-		   		var filimOuterRow  = [];
+		 	$scope.listFilims = function(){
+		 		debugger;
+		 		var filimOuterRow  = [];
 		  		filimDb.getFilims(function(filims){
 					
 					$scope.allFilims = filims;
@@ -30,20 +31,17 @@ angular.module('filimdetail')
 					
 					$scope.filimOuterRow = filimOuterRow;
 				});
+		 	}
+		   	
 
-		  		
+	  		$scope.editDetNavigation = function(filim){
+				debugger;
+				$scope.filim = filim;
 
-		 
-		  	
+				
 
-		  		$scope.editDetNavigation = function(filim){
-					
-					$scope.filim = filim;
+				// $location.path( '/partials/editFilim.html' );
 
-					
-
-					 $location.path( '/partials/editFilim.html' );
-
-				}
+			}
 
 	});
