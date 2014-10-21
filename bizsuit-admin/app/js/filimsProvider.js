@@ -22,7 +22,7 @@ angular.module('filimdetail')
 				});*/
 
 				var resp = $http.get('https://api.parse.com/1/classes/filim', config).success(function(data) {
-
+					
 					callback(data.results);
 				});
 			},
