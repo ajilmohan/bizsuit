@@ -30,6 +30,10 @@ angular.module('filimdetail')
 				
 
 				$http.post('https://api.parse.com/1/classes/filim', filim, config);
+			},
+			updateFilim : function(filim){
+				debugger;
+				$http.put('https://api.parse.com/1/classes/filim/' + filim.objectId, filim, config);
 			}
 		}
 	})
