@@ -57,4 +57,9 @@ angular.module('filimdetail')
 		 		$scope.show.time = new Date();
 		 	}
 
+		 	$scope.closeFilim = function(filim){
+		 			filim.status = 'CLOSED';
+		 			filimDb.updateFilim(filim);
+		 	}
+
 	});

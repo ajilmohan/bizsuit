@@ -101,7 +101,7 @@
 										<input ng-model="filim.imgUrl" name="uImgUrl" required maxlength="50" type="text" class="form-control " placeholder="Image Url">
 								</div>
 								<div class="col-sm-2">
-									<button class="btn btn-default"  ng-click="addImageUrl(filim.imgUrl)">Add</button>
+									<button class="btn btn-primary"  ng-click="addImageUrl(filim.imgUrl)">Add</button>
 								</div>
 							</div>
 					</div>
@@ -141,8 +141,8 @@
 					<div class="row">
 							<div class="col-sm-2">
 									<div style="height:27px" ></div>
-									<button class="btn btn-default" ng-show="showBtn" ng-click="addShow(show)">Add Shows</button>
-									<button class="btn btn-default" ng-show="!showBtn" ng-click="updateShow(show)">Update Shows</button>
+									<button class="btn btn-primary" ng-show="showBtn" ng-click="addShow(show)">Add Shows</button>
+									<button class="btn btn-primary" ng-show="!showBtn" ng-click="updateShow(show)">Update Shows</button>
 							</div>
 					</div>
 
@@ -181,10 +181,10 @@
 							   			<label class="control-label" >{{show.status}}</label>
 							   		</div>
 							   		<div class="col-md-2">
-										<button class="btn btn-default"  ng-click="editShow($index)">Edit</button>
+										<button class="btn btn-link"  ng-click="editShow($index)">Edit</button>
 									</div>
 									<div class="col-md-2">
-										<button class="btn btn-default"  ng-click="deleteShow($index)">Delete</button>
+										<button class="btn btn-link"  ng-click="deleteShow($index)">Delete</button>
 									</div>
 
 
@@ -198,8 +198,16 @@
 
 
 				<div class="row">
-						<div class="col-sm-2">
+						<div class="col-sm-4">
 									<button class="btn btn-primary"  ng-click="updateFilim(filim)">Update Filim Details</button>
+						</div>
+
+						<div class="col-sm-1">
+
+						</div>
+
+						<div class="col-sm-2">
+									<button class="btn btn-danger"  ng-click="closeFilim(filim)">Close Filim</button>
 						</div>
 				</div>
 

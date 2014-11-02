@@ -21,7 +21,10 @@ angular.module('filimdetail')
 					callback(data.results);
 				});*/
 
-				var resp = $http.get('https://api.parse.com/1/classes/filim', config).success(function(data) {
+				var filim = {};
+				filim.status = 'CLOSED'
+
+				var resp = $http.get('https://api.parse.com/1/classes/filim/' + filim.status, config).success(function(data) {
 					
 					callback(data.results);
 				});
