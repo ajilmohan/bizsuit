@@ -12,7 +12,7 @@ angular.module('filims')
 		return {
 			getFilims: function(callback) {
 				
-				var whereQuery = {"status" : "CLOSED"};
+				var whereQuery = {"status" : {"$ne" :  "CLOSED" }};
 				var url = 'https://api.parse.com/1/classes/filim?where=' + encodeURI(JSON.stringify(whereQuery));
 
 				var resp = $http.get(url, config).success(function(data) {
@@ -22,3 +22,5 @@ angular.module('filims')
 			}
 		}
 	})
+
+	
