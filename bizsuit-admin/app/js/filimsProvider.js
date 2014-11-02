@@ -15,16 +15,9 @@ angular.module('filimdetail')
 
 		return {
 			getFilims: function(callback) {
-				var filims;
 				
-				/*var resp = $http.get('https://api.parse.com/1/classes/filim', config).success(function(data) {
-					callback(data.results);
-				});*/
 
-				var filim = {};
-				filim.status = 'CLOSED'
-
-				var resp = $http.get('https://api.parse.com/1/classes/filim/' + filim.status, config).success(function(data) {
+				var resp = $http.get('https://api.parse.com/1/classes/filim/', config).success(function(data) {
 					
 					callback(data.results);
 				});
