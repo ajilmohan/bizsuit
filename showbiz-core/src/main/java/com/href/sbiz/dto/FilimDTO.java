@@ -13,6 +13,7 @@ public class FilimDTO {
 	private Date startDate;
 	private Date endDate;
 	private String status;
+	private String imagePrefix;
 	private int totalShows;
 	private String[] imageUrls;
 	private List<ShowDTO> shows;
@@ -86,6 +87,12 @@ public class FilimDTO {
 	}
 	public void setShows(List<ShowDTO> shows) {
 		this.shows = shows;
+	}
+	public String getImagePrefix() {
+		return imagePrefix;
+	}
+	public void setImagePrefix(String imagePrefix) {
+		this.imagePrefix = imagePrefix;
 	}
 	
 	
