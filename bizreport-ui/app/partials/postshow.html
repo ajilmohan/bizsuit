@@ -1,0 +1,204 @@
+<style type="text/css">
+img{
+  margin:auto;
+  width: 400px;
+}
+</style>
+
+<div class="header-placeholder"></div>
+<div class="page-header text-center container" >
+	<h4> Biz Track. </h4>
+</div>
+
+
+
+<div class="row" ng-controller="postShowController">
+
+<div class="col-md-12" >
+
+		<div class="col-md-2">
+
+				<div class="row">
+					<div class="col-md-12" >
+							 <button class="btn btn-primary btn-md" ng-click="getView('postshow')">Post Show Details</button>
+					</div>
+
+				</div>
+
+		</div>
+
+		<div class="col-md-10">
+
+
+
+				<tabset  type="pills">
+				    <tab heading="Income">
+				    		<form class="form-horizontal">
+
+								<div class="form-group">
+								    <label class="col-sm-1 control-label">Screens</label>
+								    <div class="col-sm-2">
+										<select ng-model="selectedScreen" class="form-control" ng-change="getShows(selectedScreen)" ng-options="screen as screen.name for screen in screensToProces"></select>
+								    </div>
+								    
+								    <label class="col-sm-1 control-label">Shows</label>
+								    <div class="col-sm-2">
+										<select ng-model="show" class="form-control" ng-change="populatePostShowForm(show)" ng-options="show as show.timeSlot for show in shows"></select>
+								    </div>
+								    <label class="col-sm-1 control-label">Filim</label>
+								    <div class="col-sm-2">
+										<select ng-model="selectedFilm" class="form-control"  ng-options="film as film.name for film in filmsOnScreen"></select>
+								    </div>
+								    
+								    
+								 </div>
+
+								 <div class="form-group">
+
+								 		<label class="col-sm-1 control-label">Date</label>
+									    <div class="col-sm-3">
+											
+									    		<ng-bs3-datepicker id="date1" data-ng-model='date1' language="en" date-format="YYYY-MMMM-DD"/>
+
+									    </div>
+								 </div>
+
+
+
+								 <div>
+								 	
+								 	<h4> Show Details</h4>
+
+								 </div>
+
+								 <div class="row">
+
+								 		<div class="col-sm-12 ">
+									 		<table>
+									 			<tr>
+									 				<th width="15%" >
+									 					Class
+									 				</th>
+									 				<th width="10%" >
+									 					Rate
+									 				</th>
+									 				<th width="15%" >
+									 					Sl No: From
+									 				</th>
+									 				<th width="15%" >
+									 					Sl No: To
+									 				</th>
+									 				<th width="15%" >
+									 					Gross Amount
+									 				</th>
+									 				<th width="15%" >
+									 					Res: Charges
+									 				</th>
+									 				<th width="15%" >
+									 					Online Charges
+									 				</th>
+									 			</tr>
+
+
+									 			<tr ng-repeat="facility in facilities" >
+									 				
+									 				<td>{{facility.category}}</td>
+									 				<td>{{facility.rate}}</td>
+									 				<td>
+									 					<input type="text"  ng-model="facility.serailNoFrom" class="form-control"  placeholder="Sl no: From" />
+									 				</td>
+									 				<td>
+									 					<input type="text"  ng-model="facility.serialNoTo" class="form-control"  placeholder="Sl no: To" />
+									 				</td>
+									 				<td>
+									 					<input type="text"  ng-model="facility.grossAmount" class="form-control"  placeholder="Gross Amount" />
+									 				</td>
+									 				<td>
+									 					<input type="text"  ng-model="facility.reservationAmount" class="form-control"  placeholder="Reservation Charges" />
+									 				</td>
+									 				<td>
+									 					<input type="text"  ng-model="facility.onlineAmount" class="form-control"  placeholder="Online Charges" />
+									 				</td>
+									 			</tr>
+
+
+									 		</table>
+								 		</div>
+
+								 </div>
+
+
+
+
+								<!--  <div class="row">
+								 		<div class="col-sm-2 " >
+								 			Class
+								 		</div>
+								 		<div class="col-sm-2 " >
+								 			Rate
+								 		</div>
+								 		<div class="col-sm-1 " >
+								 			Sl No: From
+								 		</div>
+								 		<div class="col-sm-1 " >
+								 			Sl No: To
+								 		</div>
+								 		<div class="col-sm-2 " >
+								 			Gross Amount
+								 		</div>
+								 		<div class="col-sm-2 " >
+								 			Reservation Charges
+								 		</div>
+								 		<div class="col-sm-2 " >
+								 			Online Charges
+								 		</div>
+								 </div>
+
+								 <div class="row" ng-repeat="facility in facilities" >
+								 		<div class="col-sm-2 " >
+								 			{{facility.category}}
+								 		</div>
+								 		<div class="col-sm-2 " >
+								 			{{facility.rate}}
+								 		</div>
+								 		<div class="col-sm-1 " >
+								 			<input type="text"  ng-model="facility.serailNoFrom" class="form-control"  placeholder="Sl no: From" />
+								 		</div>
+								 		<div class="col-sm-1 " >
+								 			<input type="text"  ng-model="facility.serialNoTo" class="form-control"  placeholder="Sl no: To" />
+								 		</div>
+								 		<div class="col-sm-2 " >
+								 			<input type="text"  ng-model="facility.grossAmount" class="form-control"  placeholder="Gross Amount" />
+								 		</div>
+								 		<div class="col-sm-2 " >
+								 			<input type="text"  ng-model="facility.reservationAmount" class="form-control"  placeholder="Reservation Charges" />
+								 		</div>
+								 		<div class="col-sm-2 " >
+								 			<input type="text"  ng-model="facility.onlineAmount" class="form-control"  placeholder="Online Charges" />
+								 		</div>
+								 </div> -->
+
+
+								 <div class="row"  >
+								 		<div class="col-sm-2" >
+								 			 <button class="btn btn-primary btn-md" ng-click="saveRecords()">			Save Records</button>
+								 		</div>
+								 </div>
+								
+						 
+							</form>
+
+
+				    </tab>
+				    <tab heading="Expences">Vertical content 2</tab>
+			  	</tabset>
+
+				
+		</div>
+
+</div>
+
+</div>
+
+
+
